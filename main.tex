@@ -1,13 +1,34 @@
 \documentclass[a4paper]{article}
 \usepackage{cv-template}
 \usepackage{geometry}[a4paper,portrait]
+\usepackage{blindtext}
 
 \begin{document}
+\cvheader{\profilepic{profile.jpg}}{
+    \begin{cvheadername}
+        \cvname{Denys}
+        \cvsurname{Vitali}
+    \end{cvheadername}
+    \begin{center}
+        
+        \begin{tabular}{ll}
+            \cvlocation{Lugano, Switzerland} & \cvmobile{+41 79 366 43 60} \\
+            \cvbirthday{September 29, 1996} & \\
+            \\ 
+            \cvemail{denys@denv.it} & \cvweb{denv.it} \\
+            \cvgithub{denysvitali}  & \cvlinkedin{denysvitali} \\
+            \cvtelegram{denvit} & \cvtwitter{denysvitali} \\
+            \cvinstagram{denvit} & \cvkeybase{denvit}
+
+        \end{tabular}
+    \end{center}
+}
+
 \section{Introduction}
 \input{include/introduction.tex}
 
-\section{Personal Data}
-\input{include/personal-data.tex}
+%\section{Personal Data}
+%\input{include/personal-data.tex}
 
 \section{Experience}
 \input{include/experience.tex}

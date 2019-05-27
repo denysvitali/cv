@@ -3,10 +3,21 @@
 \usepackage{tabularx}
 \usepackage{soul}
 \usepackage{hyperref}
-\usepackage{fontawesome}
+\usepackage{fontawesome5}
 \usepackage{xcolor}
+\usepackage{graphicx}
+%\usepackage{showframe}
+\usepackage{tgadventor} % Header Name
 
 \setlength{\parindent}{0cm}
+\graphicspath{{pictures/}}
+
+%% Colors
+% Link color: #1565C0
+\definecolor{links}{HTML}{1565C0}
+
+%% Hyper
+\hypersetup{colorlinks,urlcolor=links} % href's are correct, but navigation links are magenta
 
 \renewcommand{\section}{\@startsection{section}{12}
   {0mm}
@@ -15,22 +26,58 @@
   {\large\scshape\hrule\vspace{0.8\baselineskip}}}
 \makeatother
 
+\newcommand{\cvheader}[2]{\begin{tabular}{@{}p{0.3\textwidth}p{0.65\textwidth}}
+  #1 & #2 \\
+\end{tabular}}
+\newcommand{\profilepic}[1]{
+  \raisebox{-\height}{\includegraphics[width=0.3\textwidth,height=0.3\textwidth]{#1}}
+}
+
+\newcommand{\cvname}[1]{{\Huge\fontfamily{qag}#1}}
+\newcommand{\cvsurname}[1]{{\Huge \fontfamily{qag}\textbf{#1}}}
+\newcommand{\cvbirthday}[1]{\makebox[0.4cm][l]{{\color[HTML]{FF9100}\faBirthdayCake\ }} #1 \quad}
+\newcommand{\cvlocation}[1]{\makebox[0.4cm][l]{{\color[HTML]{DD2C00}\faMapMarker\ }} #1 \quad}
+\newcommand{\cvmobile}[1]{\makebox[0.4cm][l]{{\color[HTML]{212121}\faMobile\ }} #1 \quad}
+\newcommand{\cvemail}[1]{\makebox[0.4cm][l]{{\color[HTML]{607D8B}\faEnvelope\ }} #1 \quad}
+\newcommand{\cvweb}[1]{\makebox[0.4cm][l]{{\color[HTML]{303F9F}\faLink\ }} \href{https://#1/}{#1} \quad}
+\newcommand{\cvgithub}[1]{\makebox[0.4cm][l]{{\color[HTML]{000000}\faGithub\ }} \href{https://github.com/#1}{#1} \quad}
+\newcommand{\cvlinkedin}[1]{\makebox[0.4cm][l]{{\color[HTML]{0077B5}\faLinkedin\ }} \href{https://linkedin.com/in/#1}{#1} \quad}
+\newcommand{\cvtelegram}[1]{\makebox[0.4cm][l]{{\color[HTML]{0077B5}\faTelegram\ }} \href{https://telegram.me/#1}{#1} \quad}
+\newcommand{\cvtwitter}[1]{\makebox[0.4cm][l]{{\color[HTML]{1da1f2}\faTwitter\ }} \href{https://twitter.com/#1}{#1} \quad}
+\newcommand{\cvinstagram}[1]{\makebox[0.4cm][l]{{\color[HTML]{D0006A}\faInstagram\ }} \href{https://instagram.com/#1}{#1} \quad}
+\newcommand{\cvkeybase}[1]{\makebox[0.4cm][l]{{\color[HTML]{000000}\faKeybase\ }} \href{https://keybase.io/#1}{#1} \quad}
+
 \newcommand{\eduentry}[7]{\\\begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
   \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular} &
   \textbf{#3}\\ & 
-  \parbox{10cm}{{\color[HTML]{263238}\faicon{graduation-cap}\ }\href{#5}{#4} \quad {\color[HTML]{DD2C00}\faicon{map-marker}\ } #6 \vspace{0.8em}}\\ &
+  \parbox{10cm}{
+    \makebox[0.4cm][l]{{\color[HTML]{263238}\faGraduationCap}}
+    \href{#5}{#4} \quad 
+    \makebox[0.4cm][l]{{\color[HTML]{DD2C00}\faMapMarker}} 
+    #6 
+    \vspace{0.8em}
+  }\\ &
   \parbox{10cm}{\textit{#7}} \\
 }
 
 \newcommand{\jobentry}[7]{\\\begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
   \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular} &
   \textbf{#3}\\ & 
-  \parbox{10cm}{{\color[HTML]{263238}\faicon{building}\ }\href{#5}{#4} \quad {\color[HTML]{DD2C00}\faicon{map-marker}\ } #6 \vspace{0.8em}}\\ &
+  \parbox{10cm}{
+    \makebox[0.4cm][l]{{\color[HTML]{263238}\faBuilding}}
+    \href{#5}{#4} \quad 
+    \makebox[0.4cm][l]{{\color[HTML]{DD2C00}\faMapMarker}} 
+    #6 \vspace{0.8em}
+  }\\ &
   \parbox{10cm}{\textit{#7}} \\
 }
 
 \newenvironment{CV}
-  {\begin{tabular}{@{}p{4cm}l}
-  }
-  {\end{tabular}
-  }
+{\begin{tabular}{@{}p{4cm}l}}
+{\end{tabular}}
+
+\newenvironment{cvheadername}{
+  \begin{center}
+}{
+  \end{center}
+}
