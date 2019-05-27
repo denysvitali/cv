@@ -20,6 +20,8 @@
 %% Colors
 % Link color: #1565C0
 \definecolor{links}{HTML}{1565C0}
+% Date Color: #37474F
+\definecolor{date}{HTML}{37474F}
 
 %% Hyper
 \hypersetup{colorlinks,urlcolor=links} % href's are correct, but navigation links are magenta
@@ -68,7 +70,7 @@
   \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
   \colchunk[1]{
     \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
-    \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular}
+    \color{date}\normalsize\raggedleft #1 & \color{date}- & \color{date}\normalsize\raggedright #2 \end{tabular}
   }
   \colchunk[2]{\textbf{#3} \\
     \makebox[0.4cm][l]{{\color[HTML]{263238}\faGraduationCap}}
@@ -85,7 +87,7 @@
   \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
     \colchunk[1]{
     \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
-    \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular}
+    \color{date}\normalsize\raggedleft #1 & \color{date}- & \color{date}\normalsize\raggedright #2 \end{tabular}
   }
   \colchunk[2]{\textbf{#3} \\
     \makebox[0.4cm][l]{{\color[HTML]{263238}\faBuilding}}
