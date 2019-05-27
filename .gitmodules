@@ -1,0 +1,9 @@
+[submodule "pictures/emoji-flags"]
+	path = pictures/emoji-flags
+	url = https://github.com/denysvitali/emoji-flags
+[submodule "pictures/emoji-svg"]
+	path = pictures/emoji-svg
+	url = https://github.com/denysvitali/emoji-svg
+[submodule "pictures/emoji-tex"]
+	path = pictures/emoji-tex
+	url = https://github.com/denysvitali/emoji-tex

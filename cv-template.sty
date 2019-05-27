@@ -1,4 +1,5 @@
 \makeatletter
+\usepackage[utf8]{inputenc} 
 \usepackage[sfdefault]{roboto}
 \usepackage{tabularx}
 \usepackage{soul}
@@ -13,6 +14,7 @@
 \usepackage{lipsum}
 \usepackage{parcolumns}
 \usepackage[margin=2cm]{geometry}
+\usepackage{import}
 
 \setlength{\parindent}{0cm}
 \graphicspath{{pictures/}}
@@ -22,6 +24,9 @@
 \definecolor{links}{HTML}{1565C0}
 % Date Color: #37474F
 \definecolor{date}{HTML}{37474F}
+
+% Language Color: #37474F
+\definecolor{language}{HTML}{37474F}
 
 %% Hyper
 \hypersetup{colorlinks,urlcolor=links} % href's are correct, but navigation links are magenta
@@ -40,6 +45,11 @@
   \raisebox{-\height}{\includegraphics[width=0.3\textwidth,height=0.3\textwidth]{#1}}
 }
 
+\newcommand{\flag}[1]{\makebox[1cm][l]{\raisebox{-0.2\height}{\includegraphics[height=1.2em]{pictures/emoji-flags/#1.png}}}}
+\newcommand{\emoji}[1]{\makebox[1cm][l]{\raisebox{-0.2\height}{
+    \def\svgwidth{1.4em}
+    \import{./pictures/emoji-tex/}{emoji_u#1.pdf_tex}
+}}}
 \newcommand{\cvname}[1]{{\Huge\fontfamily{qag}#1}}
 \newcommand{\cvsurname}[1]{{\Huge \fontfamily{qag}\textbf{#1}}}
 \newcommand{\cvbirthday}[1]{\makebox[0.4cm][l]{{\color[HTML]{FF9100}\faBirthdayCake\ }} #1 \quad}
@@ -80,6 +90,7 @@
     \\
     #7
   }
+  \vspace{1em}
   \end{parcolumns}
 }
 
@@ -101,9 +112,25 @@
   \end{parcolumns}
 }
 
-\newenvironment{CV}
-{}
-{}
+
+\newcommand{\languageentry}[4]{
+  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+  \colchunk[1]{
+    {\hspace{1cm}\flag{#2}\hspace{0.2cm}\centering\color{language}#1}
+  }
+  \colchunk[2]{\textbf{#3}\\#4}
+  \vspace{1em}
+  \end{parcolumns}
+}
+
+\newcommand{\licenseentry}[2]{
+  \item \emoji{#1} \hspace{0.2em} \textbf{#2}
+}
+
+\newenvironment{CV_LICENSE}{\begin{itemize}}{\end{itemize}}
+
+
+\newenvironment{CV}{}{}
 
 \newenvironment{cvheadername}{
   \begin{center}
