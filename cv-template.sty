@@ -46,16 +46,16 @@
 }
 
 \newcommand{\flag}[1]{\makebox[1cm][l]{\raisebox{-0.2\height}{\includegraphics[height=1.2em]{pictures/emoji-flags/#1.png}}}}
-\newcommand{\emoji}[1]{\makebox[1cm][l]{\raisebox{-0.2\height}{
-    \def\svgwidth{1.4em}
+\newcommand{\emoji}[2]{\makebox[1cm][l]{\raisebox{-0.2\height}{
+    \def\svgwidth{#2}
     \import{./pictures/emoji-tex/}{emoji_u#1.pdf_tex}
 }}}
 \newcommand{\cvname}[1]{{\Huge\fontfamily{qag}#1}}
 \newcommand{\cvsurname}[1]{{\Huge \fontfamily{qag}\textbf{#1}}}
-\newcommand{\cvbirthday}[1]{\makebox[0.4cm][l]{{\color[HTML]{FF9100}\faBirthdayCake\ }} #1 \quad}
-\newcommand{\cvflag}[2]{\makebox[0.4cm][l]{{\color[HTML]{#2}\faFlag\ }} #1 \quad}
-\newcommand{\cvlocation}[1]{\makebox[0.4cm][l]{{\color[HTML]{DD2C00}\faMapMarker\ }} #1 \quad}
-\newcommand{\cvmobile}[1]{\makebox[0.4cm][l]{{\color[HTML]{212121}\faMobile\ }} #1 \quad}
+\newcommand{\cvbirthday}[1]{\hspace{-2mm}\emoji{1f382}{1em}\hspace{-3mm}#1 \quad}
+\newcommand{\cvflag}[2]{\hspace{-1mm}\flag{#2}\hspace{-5mm} #1}
+\newcommand{\cvlocation}[1]{\hspace{-2mm}\emoji{1f3e1}{1em}\hspace{-3.7mm} #1 \quad}
+\newcommand{\cvmobile}[1]{\hspace{-1.5mm}\emoji{1f4f1}{0.6em}\hspace{-3.5mm}#1 \quad}
 \newcommand{\cvemail}[1]{\makebox[0.4cm][l]{{\color[HTML]{607D8B}\faEnvelope\ }} #1 \quad}
 \newcommand{\cvweb}[1]{\makebox[0.4cm][l]{{\color[HTML]{303F9F}\faLink\ }} \href{https://#1/}{#1} \quad}
 \newcommand{\cvgithub}[1]{\makebox[0.4cm][l]{{\color[HTML]{000000}\faGithub\ }} \href{https://github.com/#1}{#1} \quad}
@@ -124,7 +124,7 @@
 }
 
 \newcommand{\licenseentry}[2]{
-  \item \emoji{#1} \hspace{0.2em} \textbf{#2}
+  \item \emoji{#1}{1.4em} \hspace{0.2em} \textbf{#2}
 }
 
 \newenvironment{CV_LICENSE}{\begin{itemize}}{\end{itemize}}
