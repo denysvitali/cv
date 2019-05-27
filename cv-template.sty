@@ -8,6 +8,11 @@
 \usepackage{graphicx}
 %\usepackage{showframe}
 \usepackage{tgadventor} % Header Name
+\usepackage{longtable} % Tables that span multiple pages
+\usepackage[skins,breakable]{tcolorbox} % Breakable box to contain text
+\usepackage{lipsum}
+\usepackage{parcolumns}
+\usepackage[margin=2cm]{geometry}
 
 \setlength{\parindent}{0cm}
 \graphicspath{{pictures/}}
@@ -36,6 +41,7 @@
 \newcommand{\cvname}[1]{{\Huge\fontfamily{qag}#1}}
 \newcommand{\cvsurname}[1]{{\Huge \fontfamily{qag}\textbf{#1}}}
 \newcommand{\cvbirthday}[1]{\makebox[0.4cm][l]{{\color[HTML]{FF9100}\faBirthdayCake\ }} #1 \quad}
+\newcommand{\cvflag}[2]{\makebox[0.4cm][l]{{\color[HTML]{#2}\faFlag\ }} #1 \quad}
 \newcommand{\cvlocation}[1]{\makebox[0.4cm][l]{{\color[HTML]{DD2C00}\faMapMarker\ }} #1 \quad}
 \newcommand{\cvmobile}[1]{\makebox[0.4cm][l]{{\color[HTML]{212121}\faMobile\ }} #1 \quad}
 \newcommand{\cvemail}[1]{\makebox[0.4cm][l]{{\color[HTML]{607D8B}\faEnvelope\ }} #1 \quad}
@@ -47,34 +53,55 @@
 \newcommand{\cvinstagram}[1]{\makebox[0.4cm][l]{{\color[HTML]{D0006A}\faInstagram\ }} \href{https://instagram.com/#1}{#1} \quad}
 \newcommand{\cvkeybase}[1]{\makebox[0.4cm][l]{{\color[HTML]{000000}\faKeybase\ }} \href{https://keybase.io/#1}{#1} \quad}
 
-\newcommand{\eduentry}[7]{\\\begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
-  \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular} &
-  \textbf{#3}\\ & 
-  \parbox{10cm}{
+\newtcolorbox{cvbox}[1][]{%
+  blank,
+  title after break=,
+  left=0mm,right=0mm,bottom=0mm,top=0mm,
+  after skip=10mm,%   enlarge distance to the next box
+  width=10cm,
+  enhanced jigsaw,
+  breakable,
+  break at=8cm,
+}
+
+\newcommand{\eduentry}[7]{
+  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+  \colchunk[1]{
+    \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
+    \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular}
+  }
+  \colchunk[2]{\textbf{#3} \\
     \makebox[0.4cm][l]{{\color[HTML]{263238}\faGraduationCap}}
     \href{#5}{#4} \quad 
     \makebox[0.4cm][l]{{\color[HTML]{DD2C00}\faMapMarker}} 
-    #6 
-    \vspace{0.8em}
-  }\\ &
-  \parbox{10cm}{\textit{#7}} \\
+    #6 \\
+    \\
+    #7
+  }
+  \end{parcolumns}
 }
 
-\newcommand{\jobentry}[7]{\\\begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
-  \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular} &
-  \textbf{#3}\\ & 
-  \parbox{10cm}{
+\newcommand{\jobentry}[7]{
+  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+    \colchunk[1]{
+    \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
+    \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular}
+  }
+  \colchunk[2]{\textbf{#3} \\
     \makebox[0.4cm][l]{{\color[HTML]{263238}\faBuilding}}
     \href{#5}{#4} \quad 
     \makebox[0.4cm][l]{{\color[HTML]{DD2C00}\faMapMarker}} 
-    #6 \vspace{0.8em}
-  }\\ &
-  \parbox{10cm}{\textit{#7}} \\
+    #6 \\
+    \\
+    #7
+  }
+  \vspace{1em}
+  \end{parcolumns}
 }
 
 \newenvironment{CV}
-{\begin{tabular}{@{}p{4cm}l}}
-{\end{tabular}}
+{}
+{}
 
 \newenvironment{cvheadername}{
   \begin{center}
