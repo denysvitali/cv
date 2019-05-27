@@ -1,0 +1,36 @@
+\makeatletter
+\usepackage[sfdefault]{roboto}
+\usepackage{tabularx}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+
+\setlength{\parindent}{0cm}
+
+\renewcommand{\section}{\@startsection{section}{12}
+  {0mm}
+  {1.5\baselineskip}
+  {0.7\baselineskip}
+  {\large\scshape\hrule\vspace{0.8\baselineskip}}}
+\makeatother
+
+\newcommand{\eduentry}[7]{\\\begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
+  \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular} &
+  \textbf{#3}\\ & 
+  \parbox{10cm}{{\color[HTML]{263238}\faicon{graduation-cap}\ }\href{#5}{#4} \quad {\color[HTML]{DD2C00}\faicon{map-marker}\ } #6 \vspace{0.8em}}\\ &
+  \parbox{10cm}{\textit{#7}} \\
+}
+
+\newcommand{\jobentry}[7]{\\\begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
+  \normalsize\raggedleft #1 & - & \normalsize\raggedright #2\end{tabular} &
+  \textbf{#3}\\ & 
+  \parbox{10cm}{{\color[HTML]{263238}\faicon{building}\ }\href{#5}{#4} \quad {\color[HTML]{DD2C00}\faicon{map-marker}\ } #6 \vspace{0.8em}}\\ &
+  \parbox{10cm}{\textit{#7}} \\
+}
+
+\newenvironment{CV}
+  {\begin{tabular}{@{}p{4cm}l}
+  }
+  {\end{tabular}
+  }
