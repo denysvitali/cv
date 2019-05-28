@@ -2,4 +2,4 @@
 
 
 ## Compile
-pdflatex main.tex
+`xelatex main.tex`
