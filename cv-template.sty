@@ -61,7 +61,7 @@
     \def\svgwidth{#2}
     \setlength{\myhspace}{#2}
 
-    \hspace{-\myhspace}
+    \hspace{-0.5\myhspace}
     \import{./pictures/programming-languages/}{#1.pdf_tex}
 }}
 \newcommand{\cvname}[1]{{\Huge\fontfamily{qag}#1}}
@@ -143,22 +143,24 @@
   \end{parcolumns}
 }
 
-\newcommand{\projectentry}[7]{
+\newcommand\projectentry[8][]{
+  \def \mysize {1em}
+  \ifx&#1&\else \def \mysize {#1}\fi
   \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
     \colchunk[1]{
     \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
-    \color{date}\normalsize\raggedleft #1 & \color{date}- & \color{date}\normalsize\raggedright #2 \end{tabular}
+    \color{date}\normalsize\raggedleft #2 & \color{date}- & \color{date}\normalsize\raggedright #3 \end{tabular}
   }
-  \colchunk[2]{\textbf{#3} \\
+  \colchunk[2]{\textbf{#4} \\
     \emoji{1F5C2}{1em}
-    \href{#4}{Project on GitHub},
-    \ifx&#5&
+    \href{#5}{Project on GitHub},
+    \ifx&#6&
     {}
     \else
-    {\hspace{0.5em}\href{#5}{Website}}
+    {\hspace{0.5em}\href{#6}{Website}}
     \fi
-    \foreach \n in {#6}{\hspace{0.5em}\proglogo{\n}{1em}}\\\\
-    #7
+    \foreach \n in {#7}{\hspace{0.5em}\proglogo{\n}{\mysize}}\\\\
+    #8
   }
   \vspace{1em}
   \end{parcolumns}
