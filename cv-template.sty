@@ -16,6 +16,8 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{import}
 \usepackage{calc}
+\usepackage{pgffor}
+\usepackage{etoolbox} % to check wheter a command is provided or not
 
 \setlength{\parindent}{0cm}
 \graphicspath{{pictures/}}
@@ -54,6 +56,13 @@
 
     \hspace{-\myhspace}
     \import{./pictures/emoji-tex/}{emoji_u#1.pdf_tex}
+}}
+\newcommand{\proglogo}[2]{\raisebox{-0.2\height}{
+    \def\svgwidth{#2}
+    \setlength{\myhspace}{#2}
+
+    \hspace{-\myhspace}
+    \import{./pictures/programming-languages/}{#1.pdf_tex}
 }}
 \newcommand{\cvname}[1]{{\Huge\fontfamily{qag}#1}}
 \newcommand{\cvsurname}[1]{{\Huge \fontfamily{qag}\textbf{#1}}}
@@ -134,6 +143,28 @@
   \end{parcolumns}
 }
 
+\newcommand{\projectentry}[7]{
+  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+    \colchunk[1]{
+    \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
+    \color{date}\normalsize\raggedleft #1 & \color{date}- & \color{date}\normalsize\raggedright #2 \end{tabular}
+  }
+  \colchunk[2]{\textbf{#3} \\
+    \emoji{1F5C2}{1em}
+    \href{#4}{Project on GitHub},
+    \ifx&#5&
+    {}
+    \else
+    {\hspace{0.5em}\href{#5}{Website}}
+    \fi
+    \foreach \n in {#6}{\hspace{0.5em}\proglogo{\n}{1em}}\\\\
+    #7
+  }
+  \vspace{1em}
+  \end{parcolumns}
+}
+
+
 
 \newcommand{\languageentry}[4]{
   \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
@@ -146,7 +177,7 @@
 }
 
 \newcommand{\licenseentry}[2]{
-  \item \emoji{#1}{1.4em} \hspace{0.2em} \textbf{#2}
+  \item \hspace{1em}\emoji{#1}{1.4em} \hspace{1em} \textbf{#2}
 }
 
 \newenvironment{CV_LICENSE}{\begin{itemize}}{\end{itemize}}
