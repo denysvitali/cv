@@ -90,8 +90,11 @@
   break at=8cm,
 }
 
+\newlength{\rightColumnSize}
+\setlength{\rightColumnSize}{11.5cm}
+
 \newcommand{\eduentry}[7]{
-  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+  \begin{parcolumns}[colwidths={1=3cm, 2=\rightColumnSize}]{2}
   \colchunk[1]{
     \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
     \color{date}\normalsize\raggedleft #1 & \color{date}- & \color{date}\normalsize\raggedright #2 \end{tabular}
@@ -108,7 +111,7 @@
 }
 
 \newcommand{\eduentrySmall}[7]{
-  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+  \begin{parcolumns}[colwidths={1=3cm, 2=\rightColumnSize}]{2}
   \colchunk[1]{
     \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
     \color{date}\normalsize\raggedleft #1 & \color{date}- & \color{date}\normalsize\raggedright #2 \end{tabular}
@@ -126,7 +129,7 @@
 
 
 \newcommand{\jobentry}[7]{
-  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+  \begin{parcolumns}[colwidths={1=3cm, 2=\rightColumnSize}]{2}
     \colchunk[1]{
     \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
     \color{date}\normalsize\raggedleft #1 & \color{date}- & \color{date}\normalsize\raggedright #2 \end{tabular}
@@ -146,7 +149,7 @@
 \newcommand\projectentry[8][]{
   \def \mysize {1em}
   \ifx&#1&\else \def \mysize {#1}\fi
-  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+  \begin{parcolumns}[colwidths={1=3cm, 2=\rightColumnSize}]{2}
     \colchunk[1]{
     \begin{tabular}{@{}p{1.5cm}p{0.1cm}p{1.5cm}@{}}
     \color{date}\normalsize\raggedleft #2 & \color{date}- & \color{date}\normalsize\raggedright #3 \end{tabular}
@@ -166,10 +169,15 @@
   \end{parcolumns}
 }
 
+\newcommand\projectsbanner{
+  \vspace{2em}
+  For more projects, please take a look at my \href{https://github.com/denysvitali}{GitHub profile}.
+}
+
 
 
 \newcommand{\languageentry}[4]{
-  \begin{parcolumns}[colwidths={1=3cm, 2=10cm}]{2}
+  \begin{parcolumns}[colwidths={1=3cm, 2=\rightColumnSize}]{2}
   \colchunk[1]{
     {\hspace{1cm}\flag{#2}\hspace{0.2cm}\centering\color{language}#1}
   }
